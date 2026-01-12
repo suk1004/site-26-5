@@ -1,0 +1,334 @@
+@import url(reset.css);
+
+/* ============ Global: White Base ============ */
+:root{
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-brd: rgba(255,255,255,0.35);
+  --ink-900:#101010;
+  --ink-700:#2b2b2b;
+  --ink-500:#555;
+  --brand:#f04a30;
+  --brown:#4a2f23;
+  --navy: #07375E;
+}
+
+html, body{
+  background:#fff;
+  color:var(--ink-900);
+}
+body{
+  display:flex;
+  flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+strong, h1, h2, h3, h4, h5, h6 {
+  font-family: 'GmarketSansMedium', 'Nanum Gothic', sans-serif;
+}
+
+/* ============ Reusable Glass ============ */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+
+/* ============ Page Shell ============ */
+#sub{
+  position:relative;
+  z-index:1;
+  flex:1 0 auto;
+}
+
+/* ========================================
+  Background Decor
+======================================== */
+.bg-decor {
+  position: absolute;
+  top: 520px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 520px);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 블롭(Blob) 요소 */
+.bg-decor .blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  filter: blur(50px);
+  opacity: .35;
+  border-radius: 50%;
+  transform: translate3d(0,0,0);
+  transition: transform .6s ease;
+}
+.bg-decor .b1 { background: #ffd3c9; top: 0; left: -80px; }
+.bg-decor .b2 { background: #c9ecff; top: 25%; right: -120px; }
+.bg-decor .b3 { background: #e9ffd3; bottom: 0; left: 10%; }
+
+.bg-decor .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(0,0,0,0.04) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.04) 96%);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, #000 40%, transparent 70%);
+  opacity: .6;
+}
+
+/* ============ Visual ============ */
+#sub.fritz .sub_visual{
+  position:relative; 
+  height:500px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden;
+}
+#sub.fritz .sub_visual::before{
+  content:"";
+  position:absolute; 
+  inset:0; 
+  z-index:0;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)),
+    url("../img/Fritz_brand.jpg") center/cover no-repeat;
+  transform: scale(1.08);
+  animation: zoomOut 4s ease-out forwards;
+}
+@keyframes zoomOut{ from{transform:scale(1.08);} to{transform:scale(1);} }
+
+#sub.fritz .sub_visual .txt_wrap{
+  position:relative; 
+  z-index:2; 
+  text-align:center;
+  margin-top: 40px;
+  padding:22px 44px;
+}
+#sub.fritz .sub_visual .txt_wrap strong{
+  font-family: 'GMarketSans';
+  display:block; 
+  font-size:64px; 
+  font-weight:600; 
+  color:#fff; 
+  letter-spacing:1.3px;
+  text-shadow:none;
+}
+#sub.fritz .sub_visual .txt_wrap p{
+  font-family: 'Yangjin';
+  margin-top:8px; 
+  font-size:22px; 
+  font-weight:400; 
+  color:#fff;
+}
+
+/* ============ Tabs ============ */
+#sub .sub_tab{ 
+  margin-top:-35px; 
+  position:relative; 
+  z-index:5; 
+}
+#sub .sub_tab .inner{ 
+  max-width:1200px;
+  height: 60px;
+  margin:0 auto; 
+}
+#sub .sub_tab ul{ 
+  display:flex; 
+  justify-content:center; 
+  gap:40px; 
+  padding:16px; 
+}
+#sub .sub_tab li{ list-style:none; }
+
+#sub .sub_tab a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 62px;
+  margin: 8px 0;
+  padding: 0 26px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #222;
+  text-decoration: none;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* hover 효과: 살짝 밝아지고 커짐 */
+#sub .sub_tab a:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  background: linear-gradient(145deg, #ffffff, #fafafa);
+}
+
+/* 활성(on) 상태: 브랜드 컬러 풀 강조 */
+#sub .sub_tab li.on a {
+  color: #fff;
+  background: linear-gradient(135deg, #ff6a4d, #f04a30);
+  border: none;
+  box-shadow: 0 10px 25px rgba(240,74,48,0.35);
+  transform: translateY(-2px);
+}
+
+/* 활성 상태에서 hover: 네온 느낌 */
+#sub .sub_tab li.on a:hover {
+  background: linear-gradient(135deg, #ff7a5f, #f14d33);
+  box-shadow: 0 12px 28px rgba(240,74,48,0.45);
+}
+
+/* ============ Content Cards (섹션별 글라스) ============ */
+.tab-content{ display:none; }
+.tab-content.active{ display:block; }
+
+#sub .con_w{
+  margin:100px auto; 
+  padding:60px 42px; 
+  max-width:1200px;
+  border-radius:16px;
+  background:var(--glass-bg);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 48px rgba(0,0,0,.08);
+  opacity:0; transform:translateY(48px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+#sub .con_w.on{ 
+  opacity:1; 
+  transform:translateY(0); 
+}
+
+#sub .sub_t{ margin-bottom:40px; }
+#sub .sub_t strong{
+  display:block; 
+  font-size:40px; 
+  font-weight:700; 
+  text-align:center; 
+  color:var(--navy);
+}
+
+/* 본문 */
+.p01{ 
+font-size:19px; 
+line-height:1.85; 
+color:var(--ink-700);
+margin-bottom: 40px;
+}
+.p01.center{text-align:center;}
+.p01.left{ 
+  text-align:left; 
+  opacity:0; 
+  transform:translateX(-50px); 
+  transition:all .6s ease; 
+}
+.p01.right{ 
+  text-align:right; 
+  opacity:0; 
+  transform:translateX(50px); 
+  transition:all .6s ease; 
+}
+.p01.left.on, .p01.right.on{ 
+  opacity:1; 
+  transform:translateX(0); 
+}
+.mt20{ margin-top:20px;}
+.highlight{ 
+  color:#a57454; 
+  font-weight:700; 
+}
+
+/* 이미지 카드 */
+.con_img, .img_box{ text-align:center; }
+.con_img img, .img_box img{
+  width: min(900px, 90%);
+  border-radius:14px;
+  background:#fff;
+  border: 10px solid #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  transition: transform .35s ease;
+}
+.img_box:hover img{ transform: translateY(-4px) rotate(1.5deg); }
+.img_box.left:hover img{ transform: translateY(-4px) rotate(-1.5deg); }
+
+/* 좌우 교차 레이아웃 */
+#sub .con02 .inner{
+  display:flex; align-items:center; gap:60px; margin:auto; max-width:1200px;
+}
+#sub .con02 .img_box, #sub .con02 .txt_box{ flex:1; }
+#sub .con02 .txt_box strong{
+  display:block; font-size:36px; font-weight:700; color:var(--navy); margin-bottom:18px;
+}
+#sub .con02 .txt_box p{ font-size:18.5px; line-height:1.7; color:var(--ink-700); }
+#sub .con02:nth-of-type(even) .inner{ flex-direction:row-reverse; text-align:end; }
+@media (max-width: 900px){
+  #sub .con02 .inner{ flex-direction:column; text-align:center; }
+}
+
+/* Final Concept 강조 */
+#sub .conFinal{
+  background: linear-gradient( to bottom right, rgba(255,255,255,.32), rgba(255,255,255,.18) );
+  backdrop-filter: blur(20px);
+  padding:72px 56px; text-align:center;
+  border:1px solid rgba(0,0,0,.06);
+}
+.final_box{ display:flex; flex-direction:column; align-items:center; gap:36px; }
+.final_img{ opacity:0; transform: scale(.94); transition: all .8s ease; }
+.final_img img{
+  width:min(500px, 90%); border-radius:16px; box-shadow:0 12px 32px rgba(0,0,0,.16);
+}
+.final_txt p{ font-size:19px; line-height:1.85; opacity:0; transform:translateY(32px); transition:all .6s ease; }
+.final_img.on{ opacity:1; transform:scale(1); }
+.final_txt p.on{ opacity:1; transform:translateY(0); }
+
+/* Footer (연한 그레이 → 순백 톤 유지) */
+footer{
+  flex-shrink:0; width:100%;
+  background:#fafafa; color:#333;
+  padding:40px 20px; font-size:14px; line-height:1.8;
+}
+.footer-inner{
+  max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px;
+}
+.footer-logo img{ width:140px; }
+.footer-info{ flex:1; min-width:300px; }
+.footer-sns{ display:flex; gap:14px; align-items:center; }
+
+/* 아이콘 공통 크기/색상 */
+.footer-sns a i {
+  font-size: 20px;          /* 기존 20px 아이콘 크기와 맞춤 */
+  color: #07375E;           /* 프릳츠 네이비 톤 */
+  transition: transform .25s ease, color .25s ease;
+}
+
+/* 호버 컬러(브랜드/의미 기반) */
+.footer-sns a.sns-instagram:hover i { color: #e440b3; } /* Instagram */
+.footer-sns a.sns-blog:hover i      { color: #2db400; } /* 한국 블로그 감성 → 네이버 그린 */
+.footer-sns a.sns-store:hover i     { color: #f04a30; } /* 브랜드 포인트 컬러 */
+
+.footer-sns a{
+  width:42px;height:42px;border-radius:50%;background:#fff; display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 5px rgba(0,0,0,.06); transition:.25s ease;
+}
+.footer-sns a:hover{ transform:translateY(-2px); background:#f2f2f2; }
+.footer-sns a img{ width:20px; height:20px; object-fit:contain; }
+.footer-bottom{ text-align:center; margin-top:28px; font-size:12px; color:#777; }
+
+/* Motion: 사용자 접근성 */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}

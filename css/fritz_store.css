@@ -1,0 +1,245 @@
+@import url(reset.css);
+
+/* Glassmorphism 공통 */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+
+:root{
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-brd: rgba(255,255,255,0.35);
+  --ink-900:#101010;
+  --ink-700:#2b2b2b;
+  --ink-500:#555;
+  --brand:#f04a30;
+  --navy:#07375E;
+}
+
+html, body{
+  background:#fff;
+  color:var(--ink-900);
+}
+body{
+  display:flex;
+  flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+strong, h1, h2, h3, h4, h5, h6 {
+  font-family: 'GmarketSansMedium', 'Nanum Gothic', sans-serif;
+}
+
+/* ============ Page Shell ============ */
+#sub{
+  position:relative;
+  z-index:1;
+  flex:1 0 auto;
+}
+
+/* ========================================
+  Background Decor (수정 버전)
+======================================== */
+.bg-decor {
+  position: absolute;
+  top: 520px; /* .sub_visual 높이만큼 아래에서 시작 */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 520px); /* 나머지 영역 채우기 */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 블롭(Blob) 요소 */
+.bg-decor .blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  filter: blur(50px);
+  opacity: .35;
+  border-radius: 50%;
+  transform: translate3d(0,0,0);
+  transition: transform .6s ease;
+}
+.bg-decor .b1 { background: #ffd3c9; top: 0; left: -80px; }
+.bg-decor .b2 { background: #c9ecff; top: 25%; right: -120px; }
+.bg-decor .b3 { background: #e9ffd3; bottom: 0; left: 10%; }
+
+.bg-decor .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(0,0,0,0.04) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.04) 96%);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, #000 40%, transparent 70%);
+  opacity: .6;
+}
+
+/* ============ Visual ============ */
+
+#sub .sub_visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#sub .sub_visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)),
+    url("../img/store_map.jpg") center/cover no-repeat;
+  transform: scale(1.08);
+  animation: zoomOut 4s ease-out forwards;
+}
+@keyframes zoomOut { from { transform: scale(1.08);} to { transform: scale(1);} }
+
+#sub .sub_visual .txt_wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 50px;
+  padding: 22px 44px;
+}
+#sub .sub_visual .txt_wrap strong {
+  font-family: 'GMarketSans';
+  display: block;
+  font-size: 64px; 
+  font-weight: 600;
+  color: #fff; 
+  letter-spacing: 1.4px;
+}
+#sub .sub_visual .txt_wrap p {
+  font-family: 'Yangjin';
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+
+#sub .sub_tab{ 
+  margin-top:-35px; 
+  position:relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============ Visual ============ */
+
+#sub.fritz .store-map {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+.store-map img {
+  width: min(1000px, 90%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transition: transform 0.4s ease;
+}
+.store-map img:hover {
+  transform: scale(1.02);
+}
+.map-caption {
+  font-family: 'GMarketSans';
+  margin-top: 60px;
+  font-size: 21px;
+  color: var(--ink-700);
+}
+
+/* 매장 카드 */
+.store-list {
+  max-width: 1100px;
+  margin: 30px auto 120px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+}
+.store-card {
+  padding: 36px 28px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.store-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+}
+.store-card h3 {
+  font-family: 'GMarketSans';
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.store-card .addr {
+  font-size: 16px;
+  color: var(--ink-700);
+}
+.store-card .tel {
+  font-size: 15px;
+  color: var(--ink-500);
+  margin-top: 8px;
+}
+.store-card.on {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all .6s ease;
+}
+/* ────────────── Store 이미지 영역 ────────────── */
+.store-card .img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.store-card .img-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+.store-card .img-wrap .img-hover {
+  opacity: 0;
+}
+
+.store-card:hover .img-wrap .img-hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.store-card:hover .img-wrap .img-main {
+  opacity: 0;
+  transform: scale(1.05);
+}

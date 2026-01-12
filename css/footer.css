@@ -1,0 +1,69 @@
+@import url(reset.css);
+
+/* Footer */
+footer{
+  flex-shrink:0; 
+  width:100%;
+  background:#fafafa; 
+  color:#333;
+  padding:40px 20px; 
+  font-size:14px; 
+  line-height:1.8; 
+}
+.footer-inner{
+  max-width:1200px; 
+  margin:0 auto; 
+  display:flex; 
+  justify-content:space-between; 
+  flex-wrap:wrap; 
+  gap:30px;
+}
+.footer-logo img{ width:140px; }
+.footer-info{ 
+  flex:1; 
+  min-width:300px; 
+}
+.footer-sns{ 
+  display:flex; 
+  gap:14px; 
+  align-items:center; 
+}
+
+/* 아이콘 공통 크기/색상 */
+.footer-sns a i {
+  font-size: 20px; 
+  color: #07375E;
+  transition: transform .25s ease, color .25s ease;
+}
+
+/* 호버 컬러(브랜드/의미 기반) */
+.footer-sns a.sns-instagram:hover i { color: #e440b3; }
+.footer-sns a.sns-facebook:hover i { color: #1877f2; }
+.footer-sns a.sns-home:hover i { color: #f04a30; }
+
+.footer-sns a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#fff; 
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 5px rgba(0,0,0,.06); 
+  transition:.25s ease;
+}
+.footer-sns a:hover{ 
+  transform:translateY(-2px); 
+  background:#f2f2f2; 
+}
+.footer-sns a img{ 
+  width:20px; 
+  height:20px; 
+  object-fit:contain; 
+}
+.footer-bottom{ 
+  text-align:center; 
+  margin-top:28px; 
+  font-size:12px; 
+  color:#777; 
+}

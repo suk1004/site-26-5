@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>FRITZ</title>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="shortcut icon" href="img/fritz_simbol.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-RXf+QSDCUQs6Q0x0kFok...=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <!-- ================== HEADER ================== -->
+    <header>
+    <div class="menu">
+      <nav>
+        <h1>
+          <a href="index_fullpage.html">
+            <!-- SVG 로고 -->
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="logo-svg" aria-label="FRITZ logo">
+              <defs>
+                <!-- 512x512 좌표계 기준. 처음엔 height=0, y=512 -->
+                <clipPath id="fillClip" clipPathUnits="userSpaceOnUse">
+                  <rect id="fillRect" x="0" y="512" width="512" height="0"></rect>
+                </clipPath>
+              </defs>
+
+              <!-- 바탕: 흰색 라인 로고 -->
+              <image href="img/fritz-logo-02.png" width="512" height="512" class="logo-white"></image>
+
+              <!-- 채워질 컬러 로고 -->
+              <image href="img/fritz-logo-01.png" width="512" height="512" class="logo-color" clip-path="url(#fillClip)"></image>
+            </svg>
+          </a>
+        </h1>
+        <ul class="gnb">
+          <li class="top-menu"><a href="fritz_brand.html">프릳츠 커피</a>
+            <ul class="sub">
+              <li><a href="fritz_brand.html#brand">브랜드소개</a></li>
+              <li><a href="fritz_brand.html#cibi">CI/BI</a></li>
+            </ul>
+          </li>
+          <li class="top-menu"><a href="shop.html">SHOP</a>
+            <ul class="sub">
+              <li><a href="shop.html#coffee">Coffee</a></li>
+              <li><a href="shop.html#gift">Gift</a></li>
+              <li><a href="shop.html#md">MD</a></li>
+            </ul>
+          </li>
+          <li class="top-menu"><a href="fritz_subscription.html">커피구독</a></li>
+          <li class="top-menu"><a href="fritz_cupping2.html">커핑클래스</a>
+            <ul class="sub">
+              <li><a href="fritz_cupping2.html#class">커핑클래스</a></li>           
+              <li><a href="fritz_cupping2.html#lesson">수업내용</a></li>
+              <li><a href="fritz_cupping2.html#apply">신청방법</a></li>
+            </ul>
+          </li>
+          <li class="top-menu"><a href="fritz_community.html">커뮤니티</a>
+            <ul class="sub">
+              <li><a href="fritz_community#notice">공지사항</a></li>
+              <li><a href="fritz_community#qna">QnA</a></li>
+            </ul>
+          </li>
+          <li class="top-menu"><a href="fritz_store.html">매장찾기</a></li>
+        </ul>
+
+        <!-- 우측 텍스트 -->
+        <ul class="top-menu-text">
+          <li><a href="login.html" class="menu-login">로그인</a></li>
+          <li><a href="#" class="menu-mypage">마이페이지</a></li>
+          <li><a href="#" class="menu-cart">장바구니</a></li>
+        </ul>
+
+        
+      </nav>
+    </div>
+  </header>
+    <!-- 로그인 모달 -->
+  <div id="loginModal" class="login-modal" style="display:none;">
+    <div class="login-overlay"></div>
+    <div class="login-dialog">
+      <button class="close-login" aria-label="닫기">×</button>
+      <div class="login-content"></div>
+    </div>
+  </div>
+
+  <!-- ================== JS ================== -->
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="js/header.js"></script>
+
+</body>
+</html>

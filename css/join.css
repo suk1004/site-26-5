@@ -1,0 +1,279 @@
+@import url(reset.css);
+@font-face {
+  font-family: 'Yangjin';
+  src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+html{
+  height: 1500px; 
+  margin: 0; 
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  height: 100%;
+  background: linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.6)
+    ),
+    url(/img/join.jpg) no-repeat center center;
+  background-size: cover; 
+  /*background-attachment: fixed;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-container{
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin: 500px;
+}
+
+.join-box {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 40px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 10px 45px rgba(0,0,0,0.3);
+}
+.logo{
+/* border: 1px solid #fff; */
+display: inline-block;
+text-align: center;
+}
+  
+.logo img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.join-box h1 {
+  font-family: 'SchoolSafetyNotification';
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.join-box h2 {
+  font-size: 20px;
+  margin: 25px 0 10px;
+  color: #f2f2f2;
+  font-weight: 600;
+}
+
+.user-check{
+  border-bottom: 1PX solid rgba(255,255,255,0.3);
+  padding-bottom: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+}
+.user-check h2{
+  margin-right: 20px;
+}
+.user-check label{
+  /*border: 1px solid #000;*/
+  flex: 1;
+  text-align: center;
+  display: inline-block;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  margin: 15px 10px 6px;
+  font-size: 17px;
+  color: #ddd;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 14px;
+}
+input::placeholder { 
+  color: rgba(255,255,255,0.8); 
+  font-weight: 400;
+}
+/* 아이디 입력 + 중복확인 버튼 행 */
+.id-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.id-row input {
+  flex: 1;
+}
+
+/* 🔹 중복확인 버튼 스타일 */
+.btn-sub {
+  display: inline-block;
+  background: #d13f28;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* hover 상태 */
+.btn-sub:hover {
+  background: #f04a30;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* 클릭시 눌리는 효과 */
+.btn-sub:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* 하단 버튼 */
+.join-buttons {
+  width: 470px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px auto 10px auto;
+}
+
+.join-buttons button {
+  padding: 14px 98px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-join {
+  background: #d13f28;
+  color: #fff;
+}
+.btn-join:hover {
+  background: #f04a30;
+}
+
+.btn-cancel {
+  background: rgba(255, 255, 255,0.8);
+  color: #000;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.btn-cancel:hover {
+  background: rgb(255, 255, 255);
+}
+
+.tel-row{
+  display: flex;
+  gap: 10px;
+}
+/* 일반전화 select 박스 */
+.tel-row select {
+  padding: 15px 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 22px;
+}
+
+/* select 안의 option도 검정색 */
+.tel-row select option {
+  color: #000;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none; 
+  /*border-color: #f04a30;*/
+  box-shadow: none;
+}
+
+.tel-row select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* 이메일 입력 행 */
+.email-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-row input:first-child {
+  flex: 1;  /* 아이디 부분 (좁게) */
+}
+
+.email-row input:last-child {
+  flex: 2;  /* 도메인 부분 (넓게) */
+}
+
+.email-row input {
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.email-row span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* 포커스 효과 통일 */
+.email-row input:focus {
+  outline: none;
+  box-shadow: none;
+}

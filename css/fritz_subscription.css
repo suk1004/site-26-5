@@ -1,0 +1,278 @@
+@import url(reset.css);
+
+/* 기본 색상 변수 */
+:root {
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-brd: rgba(255,255,255,0.35);
+  --ink-900: #101010;
+  --ink-700: #2b2b2b;
+  --ink-500: #555;
+  --brand: #f04a30;
+  --navy: #07375E;
+}
+
+html, body {
+  background: #fff;
+  color: var(--ink-900);
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 공통 Glass 스타일 */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+
+/* ========================================
+  Background Decor (수정 버전)
+======================================== */
+.bg-decor {
+  position: absolute;
+  top: 520px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 193%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 블롭(Blob) 요소 */
+.bg-decor .blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  filter: blur(50px);
+  opacity: .35;
+  border-radius: 50%;
+  transform: translate3d(0,0,0);
+  transition: transform .6s ease;
+}
+.bg-decor .b1 { background: #ffd3c9; top: 0; left: -80px; }
+.bg-decor .b2 { background: #c9ecff; top: 25%; right: -120px; }
+.bg-decor .b3 { background: #e9ffd3; bottom: 0; left: 10%; }
+
+.bg-decor .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(0,0,0,0.04) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.04) 96%);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, #000 40%, transparent 70%);
+  opacity: .6;
+}
+
+/* 비주얼 섹션 */
+#sub.subscription .sub_visual {
+  position: relative;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#sub.subscription .sub_visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)),
+    url("../img/Fritz_subscription.jpg") center/cover no-repeat;
+  transform: scale(1.08);
+  animation: zoomOut 4s ease-out forwards;
+}
+@keyframes zoomOut {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+#sub.subscription .txt_wrap {
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+}
+#sub.subscription .txt_wrap strong {
+  display: block;
+  font-family: 'GmarketSans';
+  font-size: 64px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+#sub.subscription .txt_wrap p {
+  margin-top: 10px;
+  font-family: 'Yangjin';
+  font-size: 22px;
+  color: #fff;
+}
+
+/* 블러 탭 장식용 */
+#sub.subscription .sub_tab.decor-only {
+  margin-top: -55px;
+  position: relative;
+  z-index: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 본문 구조 */
+.sub_con {
+  position: relative;
+  padding: 120px 0 140px;
+  z-index: 3;
+}
+.con_w {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 18px;
+  box-shadow: 0 10px 45px rgba(0,0,0,0.2);
+}
+
+/* 인트로 */
+.subscribe-intro p {
+  font-family: 'GMarketSans';
+  font-size: 22px;
+  color: var(--ink-700);
+  margin-bottom: 60px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* 카드 리스트 */
+.subscribe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.sub-item {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.sub-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 50px rgba(0,0,0,0.12);
+}
+.sub-item .sub-icon img {
+  width: 120px;
+  max-width: 100%;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+}
+.sub-item .sub-text h3 {
+  font-family: 'GMarketSans';
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 15px;
+}
+.sub-item .sub-text h3 span {
+  font-size: 18px;
+  color: var(--ink-700);
+  margin-left: 6px;
+}
+.sub-item .sub-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-700);
+  margin-bottom: 20px;
+}
+.sub-item .sub-info {
+  font-size: 15px;
+  color: var(--ink-500);
+}
+.sub-item .price {
+  display: block;
+  font-size: 20px;
+  color: var(--brand);
+  margin-top: 15px;
+}
+
+/* 하단 안내 */
+.subscribe-note {
+  margin-top: 60px;
+  text-align: center;
+}
+.subscribe-note li {
+  font-size: 15px;
+  color: var(--ink-700);
+  line-height: 1.6;
+}
+
+/* 반응형 */
+@media (max-width: 992px) {
+  .sub-item { flex-direction: column; text-align: center; }
+  .sub-item .sub-icon img { width: 100px; }
+  #sub.subscription .txt_wrap strong { font-size: 42px; }
+  #sub.subscription .txt_wrap p { font-size: 18px; }
+}
+
+/* ──────────────────────────────
+  Scroll Animation & Motion
+────────────────────────────── */
+
+/* Fade-Up 기본 */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-Left / Right */
+.fade-left, .fade-right {
+  opacity: 0;
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+.fade-left { transform: translateX(-50px); }
+.fade-right { transform: translateX(50px); }
+.fade-left.on, .fade-right.on {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ──────────────────────────────
+  Background Blob Scroll Motion
+────────────────────────────── */
+.bg-decor .blob {
+  transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bg-decor.active .b1 {
+  transform: translate(30px, 40px) scale(1.05);
+}
+.bg-decor.active .b2 {
+  transform: translate(-40px, -30px) scale(1.08);
+}
+.bg-decor.active .b3 {
+  transform: translate(50px, -60px) scale(1.03);
+}

@@ -1,0 +1,118 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(../img/login_img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.modal_login { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+.login {
+  position: relative;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 40px;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+}
+.logo img { 
+  width: 120px; 
+  margin-bottom: 20px; 
+}
+h2 { 
+  color: #fff; 
+  font-size: 22px; 
+  margin-bottom: 25px; 
+}
+input[type="text"], input[type="password"] {
+  width: 90%; 
+  margin-bottom: 16px; 
+  padding: 15px 16px;
+  border: none; 
+  border-radius: 6px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 15px; 
+  outline: none;
+}
+input::placeholder { 
+  color: rgba(255,255,255,0.8);
+  font-weight: 500; 
+}
+.log_btn {
+  display: block; 
+  width: 100%; 
+  margin-top: 12px; 
+  background: #f04a30;
+  color: #fff; 
+  text-align: center; 
+  font-size: 16px; 
+  font-weight: 600;
+  border-radius: 6px; 
+  padding: 15px 0; 
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.log_btn:hover { background: #d13f28; }
+.divider { 
+  width: 100%; 
+  height: 1px; 
+  background: rgba(255,255,255,0.2); 
+  margin: 20px 0 15px 0; 
+}
+.login-footer { 
+  margin-top: 0; 
+  text-align: left; 
+  width: 100%; 
+}
+.checkbox { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 3px; 
+  font-size: 14px; 
+  color: rgba(255,255,255,0.85); 
+}
+.checkbox input[type="checkbox"] { 
+  margin: 0; 
+  width: 16px; 
+  height: 16px; 
+  accent-color: #f04a30;
+}
+.signup { 
+  margin-top: 10px; 
+  font-size: 13px; 
+  color: rgba(255,255,255,0.85); 
+  text-align: center; 
+}
+.signup a { 
+  color: #f04a30; 
+  text-decoration: none; 
+}
+.signup a:hover { text-decoration: underline; }
+.close-login {
+  position: absolute; 
+  top: 12px; 
+  right: 16px; 
+  background: none; 
+  border: none;
+  color: rgba(255,255,255,0.8); 
+  font-size: 26px; 
+  cursor: pointer; 
+  transition: color 0.3s ease;
+}
+.close-login:hover { color: #f04a30; }

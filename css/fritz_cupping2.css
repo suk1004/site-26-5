@@ -1,0 +1,566 @@
+@import url(reset.css);
+
+/* ========================================
+  Global Base
+======================================== */
+:root {
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-brd: rgba(255,255,255,0.35);
+  --ink-900: #101010;
+  --ink-700: #2b2b2b;
+  --ink-500: #555;
+  --brand: #f04a30;
+  --brown: #4a2f23;
+  --navy: #07375E;
+}
+
+html, body {
+  background: #fff;
+  color: var(--ink-900);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+strong, h1, h2, h3, h4, h5, h6 {
+  font-family: 'GmarketSansMedium', 'Nanum Gothic', sans-serif;
+}
+
+/* ========================================
+  Glass Effect (공통)
+======================================== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+
+/* ========================================
+  Page Shell
+======================================== */
+#sub {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
+}
+
+/* ========================================
+  Background Decor (수정 버전)
+======================================== */
+.bg-decor {
+  position: absolute;
+  top: 520px; /* .sub_visual 높이만큼 아래에서 시작 */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 520px); /* 나머지 영역 채우기 */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 블롭(Blob) 요소 */
+.bg-decor .blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  filter: blur(50px);
+  opacity: .35;
+  border-radius: 50%;
+  transform: translate3d(0,0,0);
+  transition: transform .6s ease;
+}
+.bg-decor .b1 { background: #ffd3c9; top: 0; left: -80px; }
+.bg-decor .b2 { background: #c9ecff; top: 25%; right: -120px; }
+.bg-decor .b3 { background: #e9ffd3; bottom: 0; left: 10%; }
+
+.bg-decor .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(0,0,0,0.04) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.04) 96%);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, #000 40%, transparent 70%);
+  opacity: .6;
+}
+
+/* ========================================
+  Visual Section
+======================================== */
+#sub.cupping .sub_visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#sub.cupping .sub_visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.25)),
+    url("../img/Fritz_cupping.jpg") center/cover no-repeat;
+  transform: scale(1.08);
+  animation: zoomOut 4s ease-out forwards;
+}
+@keyframes zoomOut {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+#sub.cupping .sub_visual .txt_wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 40px;
+  padding: 22px 44px;
+}
+#sub.cupping .sub_visual .txt_wrap strong {
+  font-family: 'GMarketSans';
+  display: block;
+  font-size: 64px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1.3px;
+}
+#sub.cupping .sub_visual .txt_wrap p {
+  font-family: 'Yangjin';
+  margin-top: 8px;
+  font-size: 22px;
+  color: #fff;
+}
+
+/* ========================================
+  Tabs
+======================================== */
+#sub .sub_tab {
+  margin-top: -35px;
+  position: relative;
+  z-index: 5;
+}
+#sub .sub_tab .inner {
+  max-width: 1200px;
+  height: 60px;
+  margin: 0 auto;
+}
+#sub .sub_tab ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px;
+}
+#sub .sub_tab li { list-style: none; }
+
+#sub .sub_tab a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 62px;
+  margin: 8px 0;
+  padding: 0 26px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #222;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.35s ease;
+}
+#sub .sub_tab a:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  background: linear-gradient(145deg, #ffffff, #fafafa);
+}
+#sub .sub_tab li.on a {
+  color: #fff;
+  background: linear-gradient(135deg, #ff6a4d, #f04a30);
+  border: none;
+  box-shadow: 0 10px 25px rgba(240,74,48,0.35);
+  transform: translateY(-2px);
+}
+#sub .sub_tab li.on a:hover {
+  background: linear-gradient(135deg, #ff7a5f, #f14d33);
+  box-shadow: 0 12px 28px rgba(240,74,48,0.45);
+}
+
+/* ========================================
+  Section Common
+======================================== */
+.sub_con {
+  position: relative;
+  width: 100%;
+  padding: 120px 0 140px;
+  overflow: hidden;
+}
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+.con_w {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  color: var(--ink-900);
+  background: rgba(255,255,255,0.1);
+  border-radius: 18px;
+  box-shadow: 0 10px 45px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.con_w.on { opacity: 1; transform: translateY(0); }
+
+.con_w .inner { text-align: center; }
+
+.sub_t strong {
+  font-size: 40px;
+  color: var(--navy);
+  font-weight: 800;
+  display: block;
+  margin-bottom: 50px;
+}
+
+.p01 {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-700);
+  margin-bottom: 40px;
+}
+.p01.center { text-align: center; }
+
+/* ========================================
+  CLASS EDUCATION
+======================================== */
+.class_education {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+.class_education .edu-img {
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.9s ease;
+}
+.class_education .edu-img img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.class_education .edu-img.on {
+  opacity: 1;
+  transform: translateX(0);
+}
+.class_education .edu-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.class_education .edu-text .text-block {
+  margin-bottom: 36px;
+}
+.class_education .edu-text p {
+  font-size: 20px;
+  line-height: 1.9;
+  color: var(--ink-700);
+}
+
+/* ========================================
+  Fade Animations
+======================================== */
+.fade-left, .fade-right {
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+.fade-left { transform: translateX(-60px); }
+.fade-right { transform: translateX(60px); }
+.fade-left.on, .fade-right.on {
+  opacity: 1;
+  transform: translateX(0);
+}
+.delay-1 { transition-delay: 0.3s; }
+.delay-2 { transition-delay: 0.6s; }
+.delay-3 { transition-delay: 0.9s; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.fade-up.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+  Apply Section
+======================================== */
+.apply-box {
+  margin: 40px auto;
+  padding: 30px 40px;
+  max-width: 600px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.apply-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.apply-box li {
+  font-size: 17px;
+  margin: 10px 0;
+  color: var(--ink-700);
+  line-height: 1.6;
+}
+.apply-box li span {
+  font-weight: 700;
+  color: var(--brand);
+  margin-right: 10px;
+}
+/* HOW TO APPLY */
+#apply .apply-info {
+  margin: 40px 0 30px;
+  text-align: center;
+}
+#apply .apply-title {
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ink-900);
+  letter-spacing: 0.5px;
+}
+#apply .apply-list {
+  display: inline-block;
+  text-align: left;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid var(--glass-brd);
+  border-radius: 16px;
+  padding: 30px 40px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+#apply .apply-list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink-700);
+  margin-bottom: 8px;
+}
+#apply .apply-list span {
+  font-weight: 600;
+  color: var(--brand);
+}
+#apply .apply-list a {
+  color: var(--ink-900);
+  text-decoration: none;
+}
+#apply .apply-list a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+/* English Section */
+#apply .apply-desc {
+  margin-top: 30px;
+  text-align: center;
+}
+#apply .apply-desc .en {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-700);
+}
+#apply .apply-desc .en strong {
+  font-weight: 600;
+  color: var(--ink-900);
+}
+#apply .apply-desc .en em {
+  font-style: normal;
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* Image */
+#apply .con_img {
+  margin-top: 50px;
+  text-align: center;
+}
+#apply .con_img img {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+  LESSON TIMELINE
+======================================== */
+.lesson-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+.lesson-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #f04a30 0%, #f7c2b4 100%);
+  opacity: .4;
+  border-radius: 3px;
+  animation: drawLine 2s ease-out forwards;
+}
+@keyframes drawLine {
+  from { height: 0; opacity: 0; }
+  to { height: 100%; opacity: .4; }
+}
+.lesson-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 120px;
+}
+.lesson-item:nth-child(odd) { left: 0; text-align: right; }
+.lesson-item:nth-child(even) { left: 50%; text-align: left; }
+.lesson-item::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  background: #f04a30;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(240,74,48,0.6);
+  transition: box-shadow .6s ease;
+}
+.lesson-item:nth-child(even)::after {
+  left: -13px;
+  right: auto;
+}
+.lesson-item.glow::after {
+  animation: glowDot 2s ease-in-out forwards;
+}
+@keyframes glowDot {
+  0% { box-shadow: 0 0 8px rgba(240,74,48,0.5); }
+  50% { box-shadow: 0 0 20px rgba(240,74,48,0.9); }
+  100% { box-shadow: 0 0 10px rgba(240,74,48,0.7); }
+}
+.lesson-content {
+  display: inline-block;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  text-align: left;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.lesson-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 48px rgba(0,0,0,0.18);
+}
+.lesson-content img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.lesson-content h3 {
+  font-size: 22px;
+  color: #07375E;
+  margin-bottom: 10px;
+}
+.lesson-content p,
+.lesson-content li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #2b2b2b;
+}
+.lesson-content ul {
+  padding-left: 18px;
+}
+.lesson-content ul li::marker {
+  color: #f04a30;
+}
+.indent {
+  display: inline-block;
+  padding-left: 2.2em; /* 들여쓰기 간격 조정 */
+}
+.indent2 {
+  display: inline-block;
+  padding-left: 6.2em;
+}
+
+/* ========================================
+  Responsive
+======================================== */
+@media (max-width: 1024px) {
+  .con_w { padding: 60px 40px; }
+  .sub_tab ul { gap: 30px; }
+}
+@media (max-width: 992px) {
+  .class_education {
+    flex-direction: column;
+    align-items: center;
+  }
+  .class_education .edu-img,
+  .class_education .edu-text {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .class_education .edu-text { margin-top: 40px; }
+
+  .lesson-item,
+  .lesson-item:nth-child(even),
+  .lesson-item:nth-child(odd) {
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+  .lesson-item::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .lesson-content { max-width: 90%; }
+}
+@media (max-width: 768px) {
+  #sub.cupping .txt_wrap strong { font-size: 40px; }
+  .apply-box { padding: 20px; }
+  .con_w { padding: 40px 20px; }
+  .sub_tab ul {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

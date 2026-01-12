@@ -1,0 +1,183 @@
+@import url(reset.css);
+
+:root {
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-brd: rgba(255,255,255,0.35);
+  --ink-900: #101010;
+  --ink-700: #2b2b2b;
+  --ink-500: #555;
+  --brand: #f04a30;
+  --navy: #07375E;
+}
+
+/* 전체 폰트 통일 */
+body, button, p, span, a, strong, li {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* Glass Base */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-brd);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+
+/* Visual */
+#sub.community .sub_visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#sub.community .sub_visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.2)),
+    url("../img/community_visual.jpg") center/cover no-repeat;
+  transform: scale(1.08);
+  animation: zoomOut 4s ease-out forwards;
+}
+#sub.community .txt_wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+#sub.community .txt_wrap strong {
+  font-family: 'GMarketSans';
+  font-size: 64px;
+}
+#sub.community .txt_wrap p {
+  font-family: 'Yangjin';
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+/* Tab */
+#sub .sub_tab {
+  margin-top: -35px;
+  position: relative;
+  z-index: 5;
+}
+#sub .sub_tab ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+#sub .sub_tab li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 62px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: 0.35s ease;
+}
+#sub .sub_tab li.on a {
+  color: #fff;
+  background: linear-gradient(135deg, #ff6a4d, #f04a30);
+  box-shadow: 0 10px 25px rgba(240,74,48,0.35);
+}
+
+/* Content */
+.sub_con {
+  padding: 120px 0 140px;
+}
+.tab-content {
+  position: relative;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+.tab-content.active {
+  opacity: 1;
+  z-index: 1;
+}
+.con_w {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 18px;
+  box-shadow: 0 10px 45px rgba(0,0,0,0.1);
+}
+.sub_t strong {
+  display: block;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 40px;
+}
+
+/* Notice / QnA Accordion */
+.notice-list li, .qna-list li {
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.15);
+  margin-bottom: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.n-btn, .q-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 18px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ink-700);
+  transition: background 0.25s ease;
+}
+.n-btn:hover, .q-btn:hover { background: rgba(255,255,255,0.3); }
+.n-btn .cate {
+  background: var(--brand);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.n-btn .title { flex: 1; padding-left: 6px; font-weight: 600; }
+.n-btn .date { font-size: 14px; color: var(--ink-500); flex-shrink: 0; }
+.arrow {
+  font-size: 24px;
+  color: var(--navy);
+  transition: transform 0.3s ease;
+}
+li.active .arrow { transform: rotate(180deg); }
+.answer {
+  display: none;
+  padding: 18px 26px;
+  background: rgba(255,255,255,0.3);
+  font-size: 15px;
+  color: var(--ink-700);
+  line-height: 1.8;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+li.active .answer { opacity: 1; }
+
+/* Animation */
+.fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.fade-up.on { opacity: 1; transform: translateY(0); }
+@keyframes zoomOut { from { transform: scale(1.08);} to { transform: scale(1);} }

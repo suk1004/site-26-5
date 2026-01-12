@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>프릳츠 로그인</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="modal_login">
+    <form class="login">
+      <button type="button" class="close-login" aria-label="닫기" onclick="window.history.back()">✕</button>
+
+      <span class="logo">
+        <img src="/img/fritz-logo-02.png" alt="fritz logo">
+      </span>
+      <h2>로그인</h2>
+
+      <input type="text" name="id" placeholder="ID">
+      <input type="password" name="pw" placeholder="PASSWORD">
+
+      <div class="login-footer">
+        <label class="checkbox">
+          <input type="checkbox" id="cb">
+          로그인 상태 유지
+        </label>
+      </div>
+
+      <a class="log_btn" href="#none">로그인</a>
+
+      <div class="divider"></div>
+
+      <p class="signup">회원이 아니신가요? <a href="join.html">회원가입</a></p>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주문서 | FRITZ SHOP</title>
+  <link rel="stylesheet" href="css/shop.css">
+  <style>
+    .order-page {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .order-page h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #111;
+    }
+    .order-summary {
+      border-top: 2px solid #f04a30;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .order-summary p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    .order-form {
+      margin-top: 30px;
+    }
+    .order-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .order-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #ff6a4d, #f04a30);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #ff7a5f, #f14d33);
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="order-page">
+    <h2>주문서</h2>
+
+    <!-- 주문 요약 -->
+    <div class="order-summary">
+      <h3>주문 요약</h3>
+      <div id="order-items"></div>
+      <p id="order-total"></p>
+    </div>
+
+    <!-- 배송 정보 입력 -->
+    <div class="order-form">
+      <label for="name">이름</label>
+      <input type="text" id="name" placeholder="받는 분 성함">
+
+      <label for="address">주소</label>
+      <input type="text" id="address" placeholder="배송지 주소">
+
+      <label for="phone">연락처</label>
+      <input type="text" id="phone" placeholder="휴대폰 번호">
+
+      <button class="submit-btn">결제 진행하기</button>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $("#header").load("header.html");
+  $("#footer").load("footer.html");
+
+  function renderOrderSummary(){
+    const orderItems = JSON.parse(localStorage.getItem("fritzCart")) || [];
+    const $list = $("#order-items");
+    $list.empty();
+
+    if(orderItems.length === 0){
+      $list.html("<p>장바구니가 비어있습니다.</p>");
+      $("#order-total").text("");
+      return;
+    }
+
+    let total = 0, totalCount = 0;
+    orderItems.forEach(item => {
+      let subtotal = item.price * item.qty;
+      total += subtotal;
+      totalCount += item.qty;
+      $list.append(`
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <img src="${item.imgSrc}" alt="${item.name}" style="width:50px;height:50px;border-radius:8px;object-fit:cover;">
+          <div>
+            <p style="margin:0;font-weight:600;">${item.name}</p>
+            <p style="margin:0;font-size:14px;color:#666;">${item.qty}개 · ₩${subtotal.toLocaleString()}</p>
+          </div>
+        </div>
+      `);
+    });
+    $("#order-total").text(`총 ${totalCount}개 · ₩${total.toLocaleString()}`);
+  }
+
+  $(document).ready(renderOrderSummary);
+
+  $(".submit-btn").on("click", function(){
+    alert("결제 모듈로 연결됩니다 (추후 구현)");
+    // 결제 완료 시 localStorage.clear()로 장바구니 비우기 가능
+  });
+</script>
+
+</body>
+</html>

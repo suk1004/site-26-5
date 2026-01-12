@@ -1,0 +1,265 @@
+@import url(reset.css);
+
+/* ------------------------------
+  헤더 영역
+--------------------------------*/
+header {
+  position: fixed;
+  top: -300px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 100;
+  background: linear-gradient(rgba(48, 48, 48, 0.3), rgba(0, 0, 0, 0));
+  transition: all 1s ease;
+}
+header.load { top: 0; }
+
+.menu nav {
+  position: relative;
+  width: 1540px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+/* 로고 */
+.menu h1 {
+  position: relative;
+}
+.menu h1 .logo-svg {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  height: 100px;
+  width: auto;
+  display: block;
+  transition: all 0.5s ease;
+}
+
+/* ------------------------------
+  GNB 메뉴
+--------------------------------*/
+.gnb {
+  height: 50px;
+  display: flex;
+  column-gap: 80px;
+  margin-left: 120px;
+}
+
+/* 상위 메뉴 */
+.gnb .top-menu {
+  position: relative;
+}
+.gnb .top-menu > a {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.35s ease, transform 0.5s ease;
+}
+
+/* 언더라인 효과 */
+.gnb .top-menu > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -16px;
+  width: 0;
+  height: 2px;
+  background: #f04a30;
+  transition: width 0.3s ease;
+}
+.gnb .top-menu:hover > a::after {
+  width: 100%;
+}
+.gnb .top-menu > a:hover {
+  color: #f04a30;
+  font-weight: 700;
+}
+
+/* 서브 메뉴 */
+.gnb .sub {
+  position: absolute;
+  top: 140%;
+  left: 0;
+  min-width: 180px;
+  padding: 12px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+.gnb .top-menu:hover .sub {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 서브 메뉴 아이템 */
+.gnb .sub li { list-style: none; }
+.gnb .sub li a {
+  display: block;
+  padding: 10px 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.gnb .sub li a:hover {
+  color: #f04a30;
+  background: transparent;
+}
+
+/* ------------------------------
+  스크롤 상태 전환
+--------------------------------*/
+header.down,
+header.hover {
+  height: 100px;
+  background: rgba(255,255,255,0.7);
+  border-bottom: none;
+  transition: 0.35s;
+}
+header.down .menu h1 .logo-svg,
+header.hover .menu h1 .logo-svg {
+  padding: 7px;
+  bottom: 0;
+  transition: 0.6s;
+}
+header.down .top-menu > a,
+header.hover .top-menu > a {
+  color: #07375E;
+  font-weight: 600;
+  transform: translateY(-20px);
+  transition: color 0.3s ease, transform 0.35s ease;
+}
+header.down .gnb .sub,
+header.hover .gnb .sub {
+  top: calc(100% - 4px);
+  transition: 0.5s;
+}
+
+/* ------------------------------
+  우측 텍스트 메뉴
+--------------------------------*/
+.top-menu-text {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin:0 40px 12px 0;
+  list-style: none;
+}
+
+.top-menu-text li {
+  position: relative;
+  padding: 0 14px;
+  font-size: 15px;
+}
+
+/* 구분선 (마지막 항목 제외) */
+.top-menu-text li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-6px);
+  width: 1px;
+  height: 14px;
+  background: rgba(255,255,255,0.7);
+  transition: 0.35s ease;
+}
+
+/* header.down 상태에서 선 색상 */
+header.down .top-menu-text li:not(:last-child)::after,
+header.hover .top-menu-text li:not(:last-child)::after {
+  background: rgba(7,55,94,0.4);
+  transform: translateY(-26px);
+}
+
+/* 기본 상태 */
+.top-menu-text li a {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+/* hover 효과 */
+.top-menu-text li a:hover {
+  color: #f04a30;
+  font-weight: 700;
+}
+
+/* header.down 상태 (gnb와 동일한 전환 효과) */
+header.down .top-menu-text li a,
+header.hover .top-menu-text li a {
+  color: #07375E;
+  font-weight: 500;
+  transform: translateY(-20px);
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+header.down .top-menu-text li a:hover,
+header.hover .top-menu-text li a:hover {
+  color: #f04a30;
+}
+
+/* ------------------------------
+  로그인 모달
+--------------------------------*/
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+.login-dialog {
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.35s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.login-content {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  max-width: 420px;
+  width: 90%;
+}
+.close-login {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+.close-login:hover { color: #f04a30; }

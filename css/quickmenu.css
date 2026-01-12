@@ -1,0 +1,87 @@
+@import url(reset.css);
+
+.quick-menu {
+  position: fixed;
+  right: 70px;
+  bottom: 40px;
+  width: 120px;
+  height: fit-content;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  overflow: hidden;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  z-index: 5000;
+  transition: height 0.4s ease;
+}
+
+.quick-character {
+  text-align: center;
+  padding: 10px;
+}
+.quick-character img {
+  width: 65px;
+  height: auto;
+  margin: 0 auto;
+}
+.quick-character .speech {
+  margin-top: 7px;
+  font-size: 13px;
+  padding: 6px 8px;
+  background: #fef5d4;
+  border-radius: 10px;
+  position: relative;
+}
+.quick-character .speech::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fef5d4;
+}
+
+.quick-menu ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-top: 1px solid #eee;
+}
+.quick-menu ul li {
+  border-bottom: 1px solid #eee;
+}
+.quick-menu ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  color: #222222;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+  gap: 6px;
+}
+.quick-menu ul li a:hover {
+  background: #fef5d4;
+}
+.quick-menu ul li p{
+  font-weight: 600;
+}
+.quick-menu .material-symbols-outlined {
+  font-size: 32px;
+  line-height: 1;
+}
+.quick-top {
+  width: 100%;
+  border: none;
+  background: #f04a30;
+  color: #fff;
+  font-size: 22px;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
